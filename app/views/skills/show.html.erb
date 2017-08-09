@@ -14,8 +14,8 @@
 <h3><%= link_to "Remove Interest".html_safe, remove_interest_skill_path, method: :delete, class: "Delete" %></h3>
 <% else %>
 <h2>Select Proficiency/Interest Level</h2>
-<%= render "form_proficiency" %>
-<%= render "form_interest" %>
+<p><%= render "form_proficiency" %> - <%= render "form_interest" %></p>
+
 <% end %>
 
 </article>
