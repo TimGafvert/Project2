@@ -4,10 +4,15 @@
   <article>
     <div class="boxed">
     <h2> <a href= "skills">My Proficiencies</a></h2>
-    
+
+
     <ul>
       <% current_user.proficiencies.each do |prof| %>
-        <li> <%= prof.skill.name %> - <%= prof.level %>  </li>
+
+    <li><a href="/skills/<%= prof.skill.id %>">
+         <%= prof.skill.name %> - <%= prof.level %>
+      </a></li>
+
 
       <% end %>
 
@@ -16,13 +21,15 @@
       <br>
       <div class="boxed">
     <h2><a href= "skills"> My Interests </a></h2>
-      <ul>
-      <li>stuff</li>
-      <li>stuff</li>
-      <li>stuff</li>
-      <li>stuff</li>
-      <li>stuff</li>
-        </ul>
+    <ul>
+      <% current_user.interests.each do |inter| %>
+
+    <li><a href="/skills/<%= inter.skill.id %>">
+         <%= inter.skill.name %> - <%= inter.level %>
+      </a></li>
+
+
+      <% end %>
 </div>
 
   </article>

@@ -18,8 +18,8 @@
   box-sizing:border-box;
 }
 .mainWord{
-  text-align: right;
-  float: right;
+  text-align:center;
+  float:inherit;
 }
 body{
   max-width:60em;
@@ -31,7 +31,8 @@ body{
   height: auto;
   background-image: url("backgroundImage.jpg");
   background-repeat:no-repeat;
-  background-size:100%;
+  background-size: 100%;
+  background-attachment: fixed;
   color: white;
     text-shadow:
     -2px -2px 0 #000,
@@ -62,14 +63,21 @@ time{
   font-style:italic;
   color: #666;
 }
-
+article{
+  text-align: center;
+}
+section{
+  text-align: center;
+}
 section article{
   border-bottom: 2px solid #aaa;
   padding: 2em 0;
+  text-align: center;
 }
 
 section article:last-child{
   border:none;
+  text-align: center;
 }
 
 label,

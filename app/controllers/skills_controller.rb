@@ -18,8 +18,10 @@ class SkillsController < ApplicationController
 
   #show
   def show
+    @skills = Skill.all
     @skill = Skill.find(params[:id])
     @proficiency = current_user.proficiencies.new
+    @interest = current_user.interests.new
   end
 
   # edit
@@ -41,6 +43,12 @@ class SkillsController < ApplicationController
     redirect_to skills_path
   end
 
+  def edit_proficiency
+    @skills = Skill.all
+    @skill = Skill.find(params[:id])
+
+  end
+
   def add_proficiency
     @skill = Skill.find(params[:id])
     @skill.proficiencies.create!(proficiency_params.merge({ user: current_user }))
@@ -52,10 +60,17 @@ class SkillsController < ApplicationController
     redirect_to root_path
   end
 
+  def update_proficiency
+    @skill = Skill.find(params[:id])
+    Proficiency.update!(proficiency_params.merge({ user: current_user }))
+    redirect_to root_path
+  end
+
+
   def add_interest
     @skill = Skill.find(params[:id])
-    @skill.interests.create(user: current_user)
-    redirect_to skills_path
+    @skill.interests.create!(interest_params.merge({ user: current_user }))
+    redirect_to root_path
   end
 
   def remove_interest
@@ -67,6 +82,9 @@ class SkillsController < ApplicationController
 
   def proficiency_params
     params.require(:proficiency).permit(:level)
+  end
+  def interest_params
+    params.require(:interest).permit(:level)
   end
 
   def skill_params

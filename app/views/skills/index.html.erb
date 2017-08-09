@@ -1,3 +1,4 @@
+<%= link_to "&larr; Back".html_safe, root_path %>
 <section>
   <% if current_user %>
     <% @skills.each do |skill| %>
@@ -8,20 +9,3 @@
     <% end %>
   <% end %>
 </section>
-
-
-
-
-
-<% if false %>
-
-<%= link_to "#{skill.name}", skill_path(skill) %>
-<% @skills.each do |skill| %>
-    <li>
-      <%= link_to "Remove Proficiency".html_safe, remove_proficiency_skill_path(skill), method: :delete, class: "no-prof" %>
-      <%= link_to "Add Proficiency".html_safe, add_proficiency_skill_path(skill), method: :post, class: "prof" %>
-      <%= link_to "Add Interest".html_safe, add_interest_skill_path(skill), method: :post, class: "inter" %>
-      <%= link_to "Remove Interest".html_safe, remove_interest_skill_path(skill), method: :delete, class: "no-int" %>
-  <% end %>
-
-<% end %>

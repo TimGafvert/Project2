@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       put 'update_interest'
       post 'add_interest'
       delete 'remove_interest'
+      get 'edit_proficiency'
+      get 'edit_interest'
     end
   end
 end

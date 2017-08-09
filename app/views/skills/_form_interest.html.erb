@@ -1,0 +1,9 @@
+
+
+<article>
+<%= form_for @interest, url: add_interest_skill_path do |f| %>
+  <%= f.select :level, [['1', 1],['2', 2],['3', 3],['4', 4],['5', 5]], value: @interest.level %>
+  <%= f.submit %>
+<% end %>
+
+<article>

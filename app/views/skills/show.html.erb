@@ -2,16 +2,19 @@
 <%= link_to "&larr; Back".html_safe, skills_path %>
 <% if current_user %>
 <article>
-  <h2><%= @skill.name %></h2>
+  <h2><%= @skill.name %> </h2>
   <div class='comments'>
-  <h3>enter description</h3>
-</article>
 
 
-
-
-<h3>Select Proficiency Level</h3>
-
+<% if !@skill.users.include? current_user %>
+<h2>Select Proficiency Level</h2>
 <%= render "form_proficiency" %>
+<%= render "form_interest" %>
+<% else %>
+<h3> Current Level: - <%= @skill.proficiencies.first.level %></h3>
 
+<h3><%= link_to "Delete".html_safe, remove_proficiency_skill_path, method: :delete, class: "Delete" %></h3>
+<% end %>
+
+</article>
 <% end %>

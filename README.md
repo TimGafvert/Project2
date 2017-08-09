@@ -23,3 +23,8 @@ Things you may want to cover:
 
 * ...
 Photo by Jamison McAndie on Unsplash
+
+  <% if @skill.skill_proficiencies.include?(@skill.id) == false %>
+  <% else %>
+  <%= link_to "Delete".html_safe, remove_proficiency_skill_path, method: :delete, class: "Delete" %>
+  <% end %>
