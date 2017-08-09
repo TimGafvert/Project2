@@ -28,3 +28,6 @@ Photo by Jamison McAndie on Unsplash
   <% else %>
   <%= link_to "Delete".html_safe, remove_proficiency_skill_path, method: :delete, class: "Delete" %>
   <% end %>
+
+
+  <% if !@skill.users.include? current_user %>

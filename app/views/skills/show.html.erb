@@ -6,14 +6,16 @@
   <div class='comments'>
 
 
-<% if !@skill.users.include? current_user %>
-<h2>Select Proficiency Level</h2>
+<% if @skill.proficiencies.include? @skill.proficiencies.first %>
+<h3> Proficiency Level: - <%= @skill.proficiencies.first.level %></h3>
+<h3><%= link_to "Remove Proficiency".html_safe, remove_proficiency_skill_path, method: :delete, class: "Delete" %></h3>
+<% elsif @skill.interests.include? @skill.interests.first%>
+<h3> Interest Level: - <%= @skill.interests.first.level %></h3>
+<h3><%= link_to "Remove Interest".html_safe, remove_interest_skill_path, method: :delete, class: "Delete" %></h3>
+<% else %>
+<h2>Select Proficiency/Interest Level</h2>
 <%= render "form_proficiency" %>
 <%= render "form_interest" %>
-<% else %>
-<h3> Current Level: - <%= @skill.proficiencies.first.level %></h3>
-
-<h3><%= link_to "Delete".html_safe, remove_proficiency_skill_path, method: :delete, class: "Delete" %></h3>
 <% end %>
 
 </article>

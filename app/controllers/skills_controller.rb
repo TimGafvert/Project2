@@ -75,7 +75,7 @@ class SkillsController < ApplicationController
 
   def remove_interest
     Interest.find_by(user: current_user, skill_id: params[:id]).destroy
-    redirect_to skills_path
+    redirect_to root_path
   end
 
   private
