@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
   <head>
+
     <title>Project2</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,10 +15,17 @@
 
 
     <% if !current_user %>
-      <%= link_to "Sign in", new_user_session_path %>
+
+    <h1><p>WELCOME TO SKILL SWAP!</p></h1> <h2><p>The premier way to learn programming.</p></h2>
+    <html class="loginPage">
+    <h2><p>
+      <%= link_to "Sign in", new_user_session_path %> -
       <%= link_to "Sign Up", new_user_registration_path %>
+    </p>
+  </h2>
 
     <% else %>
+    <html class="mainPage">
     <h1 class="mainWord">Welcome to Skill Swap! Enjoy Your Stay</h1>
 
     <%= current_user.email %>
@@ -27,13 +36,9 @@
 
   </nav>
   <br>
-  <div class="boxed">
-
-
-
-
-</div>
+  
 <body>
+
   <%= yield %>
 </body>
 </html>

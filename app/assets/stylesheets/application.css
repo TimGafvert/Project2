@@ -13,6 +13,24 @@
  *= require_tree .
  *= require_self
  */
+ html {
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+ }
+
+
+.loginPage {
+background-image: url("loginPage.jpg");
+background-size: 100%;
+background-attachment: fixed;
+}
+.mainPage {
+background-image: url("mainBackground.jpg");
+background-size: 100%;
+background-attachment: fixed;
+}
 
 *{
   box-sizing:border-box;
@@ -29,10 +47,6 @@ body{
   padding-bottom:2em;
   border: 3px solid white ;
   height: auto;
-  background-image: url("backgroundImage.jpg");
-  background-repeat:no-repeat;
-  background-size: 100%;
-  background-attachment: fixed;
   color: white;
     text-shadow:
     -2px -2px 0 #000,
@@ -41,18 +55,8 @@ body{
     2px 2px 0 #000;
 }
 
-.logo a{
-  display:block;
-  float: right;
-  background-size:100%;
-  width:600px;
-  text-indent:-999em;
-  background-repeat:no-repeat;
-  height:600px;
-  /*border:none;*/
-  /*background-image: url("manySkills.jpg");*/
-  border: 3px solid white;
-}
+
+
 
 p{
 font-family: "Helvetica Neue", sans-serif;
