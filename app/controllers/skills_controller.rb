@@ -52,11 +52,13 @@ class SkillsController < ApplicationController
   def add_proficiency
     @skill = Skill.find(params[:id])
     @skill.proficiencies.create!(proficiency_params.merge({ user: current_user }))
+    flash[:notice] = "Proficiency Added!"
     redirect_to root_path
   end
 
   def remove_proficiency
     Proficiency.find_by(user: current_user, skill_id: params[:id]).destroy
+    flash[:notice] = "Proficiency Removed!"
     redirect_to root_path
   end
 
@@ -70,11 +72,13 @@ class SkillsController < ApplicationController
   def add_interest
     @skill = Skill.find(params[:id])
     @skill.interests.create!(interest_params.merge({ user: current_user }))
+    flash[:notice] = "Interest Added!"
     redirect_to root_path
   end
 
   def remove_interest
     Interest.find_by(user: current_user, skill_id: params[:id]).destroy
+    flash[:notice] = "Interest Removed!"
     redirect_to root_path
   end
 
