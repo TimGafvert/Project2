@@ -1,3 +1,16 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+
+  root to: 'users#index'
+
+  resources :skills, only: [:index, :show] do
+    member do
+      post 'add_proficiency'
+      put 'update_proficiency'
+      delete 'remove_proficiency'
+      put 'update_interest'
+      post 'add_interest'
+      delete 'remove_interest'
+    end
+  end
 end

@@ -1,0 +1,4 @@
+<%= form_for @proficiency, url: add_proficiency_skill_path do |f| %>
+  <%= f.select :level, [['0', 0],['1', 1],['2', 2],['3', 3],['4', 4],['5', 5]], value: @proficiency.level %>
+  <%= f.submit %>
+<% end %>

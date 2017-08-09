@@ -1,4 +1,4 @@
-class SkillsController < ApplicationController
+class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:add_interest, :remove_interest, :add_proficiency, :remove_proficiency]
   # index
   def index
@@ -19,7 +19,6 @@ class SkillsController < ApplicationController
   #show
   def show
     @skill = Skill.find(params[:id])
-    @proficiency = current_user.proficiencies.new
   end
 
   # edit
@@ -43,13 +42,13 @@ class SkillsController < ApplicationController
 
   def add_proficiency
     @skill = Skill.find(params[:id])
-    @skill.proficiencies.create!(proficiency_params.merge({ user: current_user }))
-    redirect_to root_path
+    @skill.proficiencies.create(user: current_user)
+    redirect_to skills_path
   end
 
   def remove_proficiency
     Proficiency.find_by(user: current_user, skill_id: params[:id]).destroy
-    redirect_to root_path
+    redirect_to skills_path
   end
 
   def add_interest
@@ -64,11 +63,6 @@ class SkillsController < ApplicationController
   end
 
   private
-
-  def proficiency_params
-    params.require(:proficiency).permit(:level)
-  end
-
   def skill_params
     params.require(:skill).permit(:name)
   end

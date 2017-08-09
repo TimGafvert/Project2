@@ -1,0 +1,17 @@
+
+<%= link_to "&larr; Back".html_safe, skills_path %>
+<% if current_user %>
+<article>
+  <h2><%= @skill.name %></h2>
+  <div class='comments'>
+  <h3>enter description</h3>
+</article>
+
+
+
+
+<h3>Select Proficiency Level</h3>
+
+<%= render "form_proficiency" %>
+
+<% end %>

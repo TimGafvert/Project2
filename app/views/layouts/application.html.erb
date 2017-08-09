@@ -3,12 +3,37 @@
   <head>
     <title>Project2</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <nav>
 
-  <body>
-    <%= yield %>
-  </body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+
+    <% if !current_user %>
+      <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Sign Up", new_user_registration_path %>
+
+    <% else %>
+    <h1 class="mainWord">Welcome to Skill Swap! Enjoy Your Stay.</h1>
+
+    <%= current_user.email %>
+
+    <br>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <% end %>
+
+  </nav>
+  <br>
+  <div class="boxed">
+
+
+
+
+</div>
+<body>
+  <%= yield %>
+</body>
 </html>
