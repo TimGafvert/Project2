@@ -5,43 +5,56 @@ class SkillsController < ApplicationController
     @skills = Skill.all
   end
 
-  # new
-  def new
-    @skill = Skill.new
-  end
+  # action not available in config/routes.rb
+  # # new
+  # def new
+  #   @skill = Skill.new
+  # end
 
-  # create
-  def create
-    @skill = Skill.create(skill_params)
-    redirect_to @skill
-  end
+  # action not available in config/routes.rb
+  # # create
+  # def create
+  #   @skill = Skill.create(skill_params)
+  #   redirect_to @skill
+  # end
 
   #show
   def show
     @skills = Skill.all
     @skill = Skill.find(params[:id])
-    @proficiency = current_user.proficiencies.new
-    @interest = current_user.interests.new
+    # if this method relies on `current_user`, then we need to ensure that
+    # the user is logged in via an if statement as follows, or add this
+    # method/action to the list of `before_action :authenticate_user! at the top`
+    if current_user
+      @proficiency = current_user.proficiencies.new
+      @interest = current_user.interests.new
+    else
+      @proficiency = nil
+      @interest = nil
+    end
   end
 
-  # edit
-  def edit
-    @skill = Skill.find(params[:id])
-  end
+  # action not available in config/routes.rb
+  # # edit
+  # def edit
+  #   @skill = Skill.find(params[:id])
+  # end
 
-  # update
-  def update
-    @skill = Skill.find(params[:id])
-    @skill.update(skill_params)
-    redirect_to @skill
-  end
+  # action not available in config/routes.rb
+  # # update
+  # def update
+  #   @skill = Skill.find(params[:id])
+  #   @skill.update(skill_params)
+  #   redirect_to @skill
+  # end
 
-  # destroy
-  def destroy
-    @skill = Skill.find(params[:id])
-    @skill.destroy
-    redirect_to skills_path
-  end
+  # action not available in config/routes.rb
+  # # destroy
+  # def destroy
+  #   @skill = Skill.find(params[:id])
+  #   @skill.destroy
+  #   redirect_to skills_path
+  # end
 
   def edit_proficiency
     @skills = Skill.all

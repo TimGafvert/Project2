@@ -64,13 +64,21 @@
   font-size: 30px;
 }
 
+/*
+I found some style inconsistencies between your deployed app and the locally run
+app where background images didn't load properly. This has to do with the way
+Heroku handles the rails asset pipeline.
+*/
+
 .loginPage {
-background-image: url("loginPage.jpg");
+/* updated to use the rails asset pipeline */
+background-image: image-url("loginPage.jpg");
 background-size: 100%;
 background-attachment: fixed;
 }
 .mainPage {
-background-image: url("mainBackground.jpg");
+/* updated to use the rails asset pipeline */
+background-image: image-url("mainBackground.jpg");
 background-size: 100%;
 background-attachment: fixed;
 }

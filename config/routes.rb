@@ -9,10 +9,16 @@ Rails.application.routes.draw do
       put 'update_proficiency'
       delete 'remove_proficiency'
       put 'update_interest'
-      post 'add_interest'
+
+      # action not implemented in SkillsController
+      # post 'add_interest'
+
       delete 'remove_interest'
       get 'edit_proficiency'
-      get 'edit_interest'
+
+      # action not implemented in SkillsController
+      # get 'edit_interest'
+
     end
   end
 end
