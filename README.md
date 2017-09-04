@@ -1,33 +1,11 @@
-# README
+## Set Up
+The system can be used after signing up on the website.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Approach
+The strategy was to set up a ruby database which would have a relational table between Skills and Users
 
-Things you may want to cover:
+## Additional features
+The site will allow for feedback for users to know how they are rated by others
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-Photo by Jamison McAndie on Unsplash
-
-  <% if @skill.skill_proficiencies.include?(@skill.id) == false %>
-  <% else %>
-  <%= link_to "Delete".html_safe, remove_proficiency_skill_path, method: :delete, class: "Delete" %>
-  <% end %>
-
-
-  <% if !@skill.users.include? current_user %>
+## Challenges
+Getting Heroku to render the CSS correctly was a bit of a struggle
