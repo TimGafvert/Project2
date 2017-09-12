@@ -5,12 +5,45 @@
   <h2><%= @skill.name %> </h2>
   <div class='comments'>
 
+<!--
+  Since this page is meant to be specific to the logged in user, using
+  @skill.proficiencies.first or @skill.interests.first is a bad practice. It
+  retrieves the first interest or proficiency in the database with no bearing on
+  the owning user.
 
-<% if @skill.proficiencies.include? @skill.proficiencies.first %>
-<h3> Proficiency Level: - <%= @skill.proficiencies.first.level %></h3>
+  With only one user in the system, this appears to work, but once a second
+  user is available, they'll see the first user's proficiencies/interests instead
+  of their own and will get a permission error when trying to edit/delete that
+  interest or proficiency.
+
+  We'll need to be more specific and enforce the current_user constraint on
+  these relations.
+
+  The following code will return the list of proficiencies the current_user
+  already has for the selected skill:
+
+  @skill.proficiencies.where(user: current_user )
+
+  With this user-filtered list, we can adjust the rest of the page to show only
+  the current user's interest/proficiencies if available or the relevant create
+  forms
+-->
+
+<%# if @skill.proficiencies.include? @skill.proficiencies.first %>
+<%
+  user_proficiencies = @skill.proficiencies.where(user: current_user)
+  user_interests = @skill.interests.where(user: current_user)
+  if user_proficiencies.count > 0
+%>
+<%# @skill.proficiencies.first.level %>
+<h3> Proficiency Level: - <%= user_proficiencies.first.level %></h3>
 <h3><%= link_to "Remove Proficiency".html_safe, remove_proficiency_skill_path, method: :delete, class: "Delete" %></h3>
-<% elsif @skill.interests.include? @skill.interests.first%>
-<h3> Interest Level: - <%= @skill.interests.first.level %></h3>
+<%# elsif @skill.interests.include? @skill.interests.first%>
+<%
+  elsif user_interests.count > 0
+%>
+<%# @skill.interests.first.level %>
+<h3> Interest Level: - <%= user_interests.first.level %></h3>
 <h3><%= link_to "Remove Interest".html_safe, remove_interest_skill_path, method: :delete, class: "Delete" %></h3>
 <% else %>
 <h2>Select Proficiency/Interest Level</h2>
